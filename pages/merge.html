@@ -1,0 +1,45 @@
+<div id='container'>
+<section><center><img id ='images' />
+<br><b><div id='results' class='blink_me'></div></b><progress id='progress_bar' value="0" max="100" >
+</progress>
+</center>
+</section>
+
+<section id='first'>
+	<div class='box'>
+	<center><h3>Combine PDFs</h3></center>
+		<p>Select two or more pdfs from your computer and Press Combine.</p>
+		<h5>Please use pdf files with version 1.4 and lower!  To check the pdf version, Open the pdf file and then Go to File-Properties. The version is listed under Advanced section !</h5>
+	</div>
+</section>
+<section id='second'>
+	<div class='box'>
+	<h3>Select PDF files</h3>
+<form enctype="multipart/form-data" method="post" id='form1'>
+<center><input type="submit" class='submit' value="Combine" id="upload"/></center><br>
+	<label for='name'>Name of the merged file</label><input type='text' name='name' id='name' value='MergedFile'/><br><br>
+    <input name="file[]" type="file" accept ='application/pdf' required/>
+    <input name="file[]" type="file" accept ='application/pdf' required/>
+</form><br><br>
+	<button id='add' style="width:auto">Add Another File</button>
+</section>
+<section id='third'>
+	<div class='box'>
+	<h3>Your combined PDF file</h3>
+	<div id='output' style='display:none;' class='blink_me'></div>
+
+	</div>
+</section>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		get_images("images/minions/combine_minions.png",'little_minions'); 
+		$('#add').click(function(){
+			add_input('form1');
+		});
+		$('#form1').submit(function(){
+			send('form1','combine');
+        	return false;
+		})
+	});
+</script>

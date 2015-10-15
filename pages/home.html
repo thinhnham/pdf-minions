@@ -1,0 +1,80 @@
+	<center><h1> Hey buddy !We're PDF minions</h1>
+<img id='logo' src="images/logo_minion.png" /></center>
+<div id='container'>
+<center>
+<section class='box'><center>
+		<h5>Please use pdf files with version 1.4 and lower!  To check the pdf version, Open the pdf file and then Go to File-Properties. The version is listed under Advanced section !</h5>
+		</center>
+</section>
+<section id='first_box'>
+	<div class = 'icon_box' style='background-color:#0f9d58;'>
+		<center><h3>Combine</h3></center>
+		<div>
+		<center>
+			<p>Combine 2 or more pdfs into a single pdf.</p>
+			<img  class="icons" src="images/combine.png" /><br>
+			<button onclick="window.location='merge.html'">Combine</button>
+		</center>
+		</div>
+	</div>
+</section>
+<section id='second_box'>
+	<div  class = 'icon_box' style='background-color:#d9534f;'>
+		<center><h3>Split PDF</h3></center>
+		<div>
+		<center>
+			<p>Split a big pdf into smaller pdfs</p>
+			<img  class="icons" src="images/split.png" /><br><br>
+			<button onclick="window.location = 'split.html'">Split a PDF</button>
+		</center>		
+		</div>
+	</div>
+</section>
+</div>
+<style type="text/css">
+	.icon_box{
+		padding:10px;
+		border-radius:10px;
+		margin-bottom:5px;
+		-webkit-box-shadow: -5px -12px 139px -32px rgba(0,0,0,0.75);
+		-moz-box-shadow: -5px -12px 139px -32px rgba(0,0,0,0.75);
+		box-shadow: -5px -12px 139px -32px rgba(0,0,0,0.75);
+		height:240px;
+	}	
+	#first_box{
+		padding: 5px 15px;
+		width: 400px;
+		float:left;
+		
+	}
+	#second_box{
+		width: 400px;
+		float: left;
+		padding: 5px 15px;
+		margin: 0px 5px 5px 5px;
+	}
+	@media screen and (max-width: 980px) {
+		#first_box{
+			width: 41%;
+			padding: 1% 4%;
+		}
+		#second_box{
+			width: 41%;
+			padding: 1% 4%;
+			margin: 0px 0px 5px 5px;
+			float: right;
+		}
+	}
+	@media screen and (max-width: 600px) {
+		#first_box{
+			width: auto;
+			float:none;
+		}
+		#second_box{
+			width: auto;
+			float: none;
+			margin-left: 0px;
+		}
+	}
+
+</style>

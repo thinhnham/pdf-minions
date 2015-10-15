@@ -1,0 +1,126 @@
+<?php
+ob_start();
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding"> 
+	<!--style-sheets-->
+	<link rel="stylesheet" type="text/css" title="Default Styles" href="css/style.css"/>   
+	<link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+	
+	<!--libraries-->
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src='js/nav_pull.js'></script>
+
+</head>
+<?php
+//this is done for security purposes
+//.htaccess file specifies the url in the format 'index.html?url=' + requested page
+// we can parse url variable from $_GET['url'] and the page will be displayed as /requested_page.html
+// if url is undefined, redirect to home.html
+if (!isset($_GET['url'])) {
+    $filename = 'home.html';
+} else {
+    $filename = $_GET['url'];
+}
+ob_start();
+//make sure to reference the folder that contains the pages
+if (file_exists($_SERVER['DOCUMENT_ROOT']."/pdfminions/pages/$filename")){
+	require($_SERVER['DOCUMENT_ROOT']."/pdfminions/pages/$filename");
+}else{
+	echo "File not found.<br />";
+}
+$content = ob_get_clean();
+$highlight = substr($filename, 0, strpos(".html", $filename));
+?>
+<body>
+<!-- Navigation bar -->
+<nav class ='clearfix'>
+	<ul class='clearfix'><center>
+		<li><a href='home.html'>Home Page</a></li>
+		<li><a href="merge.html">Combine PDF</a></li>
+		<li><a href="split.html">Split PDF</a></li>
+		<li><a href="http://www.youngwebdev.com/portfolio.html">My Portfolio</a></li>
+	</center>
+	</ul>
+	<a href="#" id='pull'>Menu</a>
+</nav>
+<!-- content of each page -->
+<?php
+	echo $content;
+?>
+<!-- footer -->
+<footer>
+<center><h4>Created by Thinh Nham @ <a href='http://www.youngwebdev.com' style='text-decoration:none'>www.youngwebdev.com</a></h4></center>
+</footer>
+</body>
+</html>
+<script src='js/front_end_processing.js'></script>
+
+
+<style>
+    .rotate{
+     width:100px;
+     height: 100px;
+     border-radius:50%;
+    -webkit-animation-name: rotate; 
+    -webkit-animation-duration: 2s; 
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: rotate; 
+    -moz-animation-duration: 2s; 
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    animation-name: rotate; 
+    animation-duration: 2s; 
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+	}
+	@-webkit-keyframes rotate {
+	    from {-webkit-transform: rotate(0deg);}
+	    to {-webkit-transform: rotate(360deg);}
+	}
+
+	@-moz-keyframes rotate {
+	    from {-moz-transform: rotate(0deg);}
+	    to {-moz-transform: rotate(360deg);}
+	}
+	s
+	@keyframes rotate {
+	    from {transform: rotate(0deg);}
+	    to {transform: rotate(360deg);}
+	}
+	.big_minion{
+		height:350x;
+		width:200px;
+	}
+	.little_minions{
+		width: 400px;
+		height:250px;
+	}
+	#progress_bar {
+		width:450px;display:none;
+	}
+	@media screen and (max-width: 480px){
+		.little_minions{
+		width: 80%;
+		height:20%;
+		}
+		#progress_bar {
+		      width: 70%;display:none;
+		}
+
+	}
+
+
+</style>
